@@ -2,8 +2,8 @@ name: xmSports
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '30 11 * * *'
+  # schedule:
+  #   - cron: '30 11 * * *'
   watch:
     types: started
   repository_dispatch:
