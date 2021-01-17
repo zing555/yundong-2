@@ -5,7 +5,7 @@ import requests,time,re,json,random
 
 now = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 headers = {
-        'User-Agent': 'Dalvik/2.1.0 (Linux; U; Android 9; MI 6 MIUI/20.6.18)'
+        'User-Agent':'Mozilla/5.0 (Linux; U; Android 9; zh-cn; MI 6 Build/PKQ1.190118.001)'
         }
  
 #获取登录code
@@ -67,8 +67,8 @@ def main(user, passwd, step, sckey):
         return
     
     if step == '':
-        print ("已设置为随机步数（10000-19999）")
-        step = str(random.randint(10000,19999))
+        print ("已设置为随机步数（16000-15000）")
+        step = str(random.randint(16000,25000))
     login_token = 0
     login_token,userid = login(user,password)
     if login_token == 0:
