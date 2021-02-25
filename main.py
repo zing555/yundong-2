@@ -4,30 +4,29 @@
 import requests,time,re,json,random
 import os
 
-TG_BOT_TOKEN = os.environ["TG_BOT_TOKEN"]           # telegram bot token 自行申请
-TG_USER_ID = os.environ["TG_USER_ID"]             # telegram 用户ID
-
-def telegram_bot(title, content):
+PUSH_PLUS_TOKEN = os.environ["PUSH_PLUS_TOKEN"]
+PUSH_PLUS_USER = os.environ["PUSH_PLUS_USER"]
+def pushPlus(title, content):
     print("\n")
-    tg_bot_token = TG_BOT_TOKEN
-    tg_user_id = TG_USER_ID
-    if "TG_BOT_TOKEN" in os.environ and "TG_USER_ID" in os.environ:
-        tg_bot_token = os.environ["TG_BOT_TOKEN"]
-        tg_user_id = os.environ["TG_USER_ID"]
-    if not tg_bot_token or not tg_user_id:
-        print("Telegram推送的tg_bot_token或者tg_user_id未设置!!\n取消推送")
+    push_plus_token = PUSH_PLUS_TOKEN
+    push_plus_user = PUSH_PLUS_USER
+    if "PUSH_PLUS_TOKEN" in os.environ and "PUSH_PLUS_USER" in os.environ:
+        push_plus_token = os.environ["PUSH_PLUS_TOKEN"]
+        push_plus_user = os.environ["PUSH_PLUS_USER"]
+    if not push_plus_token or not push_plus_user:
+        print("pushPlus推送的push_plus_token或者push_plus_user未设置!!\n取消推送")
         return
-    print("Telegram 推送开始")
-    send_data = {"chat_id": tg_user_id, "text": title +
+    print("pushPlus 推送开始")
+    send_data = {"chat_id": push_plus_user, "text": title +
                  '\n\n'+content, "disable_web_page_preview": "true"}
     response = requests.post(
-        url='https://api.telegram.org/bot%s/sendMessage' % (tg_bot_token), data=send_data)
+        url='https://pushplus.hxtrip.com/send')
     print(response.text)
 
 now = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 headers = {
         'User-Agent': 'Dalvik/2.1.0 (Linux; U; Android 9; MI 6 MIUI/20.6.18)'
-        }
+        }        
  
 #获取登录code
 def get_code(location):
