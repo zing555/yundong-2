@@ -39,8 +39,8 @@ def post_push(token, title, content):
  body = json.dumps(data).encode(encoding='utf-8')
  headers = {'Content-Type': 'application/json'}
  requests.post(url, data=body, headers=headers)
-    if not push_plus_token or not push_plus_user:
-        print("pushPlus推送的push_plus_token或者push_plus_user未设置!!\n取消推送")
+    if not post_push:
+        print("pushPlus推送的post_push或者post_push未设置!!\n取消推送")
         return
     print("pushPlus 推送开始")
     send_data = {"chat_id": push_plus_user, "text": title +
